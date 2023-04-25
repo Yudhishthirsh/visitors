@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '523331823321088',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v11.0'
+    });
+  };
+   </script>
+    <title>My Website</title>
+</head>
+<body>
+    <h1>Welcome to My Website</h1>
+    <p>Your IP address is: {{ ip_address }}</p>
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+    </fb:login-button>
+    <script>
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+        // User is logged in and authenticated with your app
+        var accessToken = response.authResponse.accessToken;
+        // Do something with the access token, such as send it to your server
+      } else {
+        // User is not logged in to Facebook or has not authenticated your app
+      }
+    });
+  }
+   </script>
+
+</body>
+</html>
